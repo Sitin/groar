@@ -1,0 +1,29 @@
+{
+    "name":            "module",
+    "version":         "0.0.1",
+    "author":          {
+        "name":  "Author Name",
+        "email": "mail@example.com"
+    },
+    "licenses":        [
+        {
+            "type": "MIT",
+            "url":  "http://mths.be/mit"
+        }
+    ],
+    "main":            "index",
+    "engines":         {
+        "node": "*"
+    },
+    "scripts":         {
+        "test":  "grunt test"
+    },
+    "dependencies":    {
+    },
+    "devDependencies": {
+        "grunt":             "~0.3.17",
+        "grunt-coffee":      "*",
+        "grunt-coffeelint ": "*"
+    },
+    "keywords":        ["key", "words"]
+}

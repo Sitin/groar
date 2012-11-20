@@ -1,0 +1,5 @@
+/node_modules/
+/coffee/
+.git*
+.DS_STORE
+.idea

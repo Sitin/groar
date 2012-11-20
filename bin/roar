@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+var
+  program = require('commander'),
+  fs = require('fs'),
+  mkdirp = require('mkdirp'),
+  path = require('path'),
+  wrench = require('wrench');
+
+program
+  .version('0.0.1')
+  .option('-i, --init [dir_name]', 'Init directory')
+  .option('-t, --template [template]', 'Set template')
+  .parse(process.argv);
+
+if (program.init) {
+  var project = {
+    template: program.template,
+    name:     program.init
+  }
+
+  // Project defaults:
+  if (typeof project.name === 'string') {
+    project.path = './' + project.name;
+  } else {
+    project.name = path.basename('.');
+    project.path = path.dirname('.');
+  }
+
+  project.templatePath = __dirname + '/../templates/' + project.template + '/';
+
+  // Template defaults:
+  if (typeof template !== 'string') {
+    template = 'module';
+  }
+
+  // Report accepted command:
+  console.log('Init with template "%s" to "%s"', project.template, project.path);
+
+  // Copy template dir:
+  wrench.copyDirRecursive(project.templatePath, project.path, function (err, current) {
+    if (!err) {
+      console.log([
+        'Done. Now try:',
+        '    $ cd %s',
+        '    $ npm install',
+        '    $ grunt watch'].join('\n'), project.name);
+    }
+  });
+} else {
+  program.help();
+}

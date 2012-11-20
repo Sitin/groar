@@ -1,0 +1,45 @@
+{
+    "name":           "roar",
+    "description":    "Template manager for grunt.",
+    "version":        "0.1.0",
+    "homepage":       "https://github.com/sitin/roar",
+    "author":         {
+        "name": "Mikhail Zyatin",
+        "email":"mikhail.zyatin@gmail.com"
+    },
+    "repository":     {
+        "type":"git",
+        "url": "git://github.com/sitin/roar.git"
+    },
+    "bugs":           {
+        "url":"https://github.com/sitin/roar/issues"
+    },
+    "licenses":       [
+        {
+            "type":"MIT",
+            "url": "https://github.com/sitin/roar/blob/MIT-LICENSE.md"
+        }
+    ],
+    "main":           "server",
+    "engines":        {
+        "node":">= 0.8.14"
+    },
+    "scripts":        {
+        "test": "grunt test",
+        "start":"server"
+    },
+    "bin":            {
+        "tigerrr":"./bin/roar"
+    },
+    "dependencies":   {
+        "commander":"*",
+        "mkdirp":   "*",
+        "wrench":   "*"
+    },
+    "devDependencies":{
+        "grunt":            "~0.3.17",
+        "grunt-coffee":     "*",
+        "grunt-coffeelint ":"*"
+    },
+    "keywords":       ["grunt", "scaffold", "module"]
+}
