@@ -1,4 +1,6 @@
 module.exports = function (grunt) {
+  "use strict";
+
   var options = require('./groar');
   // Project configuration
   grunt.initConfig({
