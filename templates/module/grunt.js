@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-  var options = require('./roar');
+  var options = require('./groar');
   // Project configuration
   grunt.initConfig({
     pkg:        '<json:package.json>',

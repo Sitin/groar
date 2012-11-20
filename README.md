@@ -1,12 +1,12 @@
-# roar
+# groar
 
 Simple project generator for Grunt.
 
 ## Getting Started
-Install the module with: `npm install roar -g`
+Install the module with: `npm install groar -g`
 
 ```shell
-roar init
+groar init
 ```
 
 ## Documentation

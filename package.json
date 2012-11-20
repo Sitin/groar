@@ -1,23 +1,23 @@
 {
-    "name":           "roar",
+    "name":           "groar",
     "description":    "Template manager for grunt.",
     "version":        "0.1.0",
-    "homepage":       "https://github.com/sitin/roar",
+    "homepage":       "https://github.com/sitin/groar",
     "author":         {
         "name": "Mikhail Zyatin",
         "email":"mikhail.zyatin@gmail.com"
     },
     "repository":     {
         "type":"git",
-        "url": "git://github.com/sitin/roar.git"
+        "url": "git://github.com/sitin/groar.git"
     },
     "bugs":           {
-        "url":"https://github.com/sitin/roar/issues"
+        "url":"https://github.com/sitin/groar/issues"
     },
     "licenses":       [
         {
             "type":"MIT",
-            "url": "https://github.com/sitin/roar/blob/MIT-LICENSE.md"
+            "url": "https://github.com/sitin/groar/blob/MIT-LICENSE.md"
         }
     ],
     "main":           "server",
@@ -29,7 +29,7 @@
         "start":"server"
     },
     "bin":            {
-        "tigerrr":"./bin/roar"
+        "tigerrr":"./bin/groar"
     },
     "dependencies":   {
         "commander":"*",
