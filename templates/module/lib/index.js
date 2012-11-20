@@ -1,3 +1,3 @@
 module.exports = function() {
-  return "Module content";
+  throw new Error("Trying to execute project that hasn't been built yet. You should build it by '$ grunt' command.");
 }
