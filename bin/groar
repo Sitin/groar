@@ -21,6 +21,11 @@ if (program.init) {
     name:     program.init
   }
 
+  // Only one project creation allowed per project:
+  if (project.name instanceof Array) {
+    project.name = project.name[0];
+  }
+
   // Project defaults:
   if (typeof project.name === 'string') {
     project.path = './' + project.name;
