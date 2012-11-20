@@ -1,45 +1,45 @@
 {
-    "name":           "groar",
-    "description":    "Template manager for grunt.",
-    "version":        "0.1.0",
-    "homepage":       "https://github.com/sitin/groar",
-    "author":         {
-        "name": "Mikhail Zyatin",
-        "email":"mikhail.zyatin@gmail.com"
+    "name":            "groar",
+    "description":     "Template manager for grunt.",
+    "version":         "0.1.0",
+    "homepage":        "https://github.com/sitin/groar",
+    "author":          {
+        "name":  "Mikhail Zyatin",
+        "email": "mikhail.zyatin@gmail.com"
     },
-    "repository":     {
-        "type":"git",
-        "url": "git://github.com/sitin/groar.git"
+    "repository":      {
+        "type": "git",
+        "url":  "git://github.com/sitin/groar.git"
     },
-    "bugs":           {
-        "url":"https://github.com/sitin/groar/issues"
+    "bugs":            {
+        "url": "https://github.com/sitin/groar/issues"
     },
-    "licenses":       [
+    "licenses":        [
         {
-            "type":"MIT",
-            "url": "https://github.com/sitin/groar/blob/MIT-LICENSE.md"
+            "type": "MIT",
+            "url":  "https://github.com/sitin/groar/blob/MIT-LICENSE.md"
         }
     ],
-    "main":           "server",
-    "engines":        {
-        "node":">= 0.8.14"
+    "main":            "server",
+    "engines":         {
+        "node": ">= 0.8.14"
     },
-    "scripts":        {
-        "test": "grunt test",
-        "start":"server"
+    "scripts":         {
+        "test":  "grunt test",
+        "start": "server"
     },
-    "bin":            {
-        "tigerrr":"./bin/groar"
+    "bin":             {
+        "groar": "./bin/groar"
     },
-    "dependencies":   {
-        "commander":"*",
-        "mkdirp":   "*",
-        "wrench":   "*"
+    "dependencies":    {
+        "commander": "*",
+        "mkdirp":    "*",
+        "wrench":    "*"
     },
-    "devDependencies":{
-        "grunt":            "~0.3.17",
-        "grunt-coffee":     "*",
-        "grunt-coffeelint ":"*"
+    "devDependencies": {
+        "grunt":             "~0.3.17",
+        "grunt-coffee":      "*",
+        "grunt-coffeelint ": "*"
     },
-    "keywords":       ["grunt", "scaffold", "module"]
+    "keywords":        ["grunt", "scaffold", "module"]
 }
