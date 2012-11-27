@@ -6,11 +6,11 @@ var
   mkdirp = require('mkdirp'),
   path = require('path'),
   wrench = require('wrench'),
-  package = require(__dirname + '/../package.json'),
+  pkg = require(__dirname + '/../package.json'),
   defaultTemplate = 'module';
 
 program
-  .version(package.version)
+  .version(pkg.version)
   .option('-i, --init [dir_name]', 'Init directory')
   .option('-t, --template [template]', 'Set template')
   .parse(process.argv);
@@ -19,9 +19,9 @@ if (program.init) {
   var project = {
     template: program.template,
     name:     program.init
-  }
+  };
 
-  // Only one project creation allowed per project:
+  // Only one project creation allowed per command:
   if (project.name instanceof Array) {
     project.name = project.name[0];
   }
@@ -45,6 +45,7 @@ if (program.init) {
   console.log('Init with template "%s" to "%s".', project.template, project.path);
 
   // Copy template dir:
+  exit();
   wrench.copyDirRecursive(project.templatePath, project.path, function (err, current) {
     if (!err) {
       console.log([
@@ -52,6 +53,8 @@ if (program.init) {
         '    $ cd %s',
         '    $ npm install',
         '    $ grunt watch'].join('\n'), project.name);
+    } else {
+      console.log("Error: ", current);
     }
   });
 } else {
