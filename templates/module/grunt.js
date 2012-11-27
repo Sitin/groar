@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg:        '<json:package.json>',
     test:       {
-      files: ['test/**/*.js']
+      files: [options.testPath + '/**/*.js']
     },
     coffeelint: {
       main: [options.coffeePath + '/**/*.coffee']

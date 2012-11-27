@@ -1,4 +1,5 @@
 module.exports = {
   buildPath:   'lib',
-  coffeePath:  'coffee'
+  coffeePath:  'coffee',
+  testPath:    'test'
 };
