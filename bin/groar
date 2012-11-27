@@ -45,7 +45,6 @@ if (program.init) {
   console.log('Init with template "%s" to "%s".', project.template, project.path);
 
   // Copy template dir:
-  exit();
   wrench.copyDirRecursive(project.templatePath, project.path, function (err, current) {
     if (!err) {
       console.log([
