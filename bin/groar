@@ -1,59 +1,53 @@
-#!/usr/bin/env node
+#!/usr/bin/env coffee
 
-var
-  program = require('commander'),
-  fs = require('fs'),
-  mkdirp = require('mkdirp'),
-  path = require('path'),
-  wrench = require('wrench'),
-  package = require(__dirname + '/../package.json'),
-  defaultTemplate = 'module';
+program = require 'commander'
+fs = require 'fs'
+mkdirp = require 'mkdirp'
+path = require 'path'
+wrench = require 'wrench'
+pckg = require "#{__dirname}/../package.json"
+defaultTemplate = 'module'
 
 program
-  .version(package.version)
+  .version(pckg.version)
   .option('-i, --init [dir_name]', 'Init directory')
   .option('-t, --template [template]', 'Set template')
-  .parse(process.argv);
+  .parse(process.argv)
 
-if (program.init) {
-  var project = {
-    template: program.template,
+if program.init
+  project =
+    template: program.template
     name:     program.init
-  }
 
-  // Only one project creation allowed per project:
-  if (project.name instanceof Array) {
-    project.name = project.name[0];
-  }
+  # Only one project creation allowed per project:
+  if project.name instanceof Array
+    project.name = project.name[0]
 
-  // Project defaults:
-  if (typeof project.name === 'string') {
-    project.path = './' + project.name;
-  } else {
-    project.name = path.basename('.');
-    project.path = path.dirname('.');
-  }
+  # Project defaults:
+  if typeof project.name == 'string'
+    project.path = './' + project.name
+  else
+    project.name = path.basename '.'
+    project.path = path.dirname '.'
 
-  // Template defaults:
-  if (typeof project.template !== 'string') {
-    project.template = defaultTemplate;
-  }
+  # Template defaults:
+  if typeof project.template != 'string'
+    project.template = defaultTemplate
 
-  project.templatePath = __dirname + '/../templates/' + project.template + '/';
+  project.templatePath = "#{__dirname}/../templates/#{project.template}/"
 
-  // Report accepted command:
-  console.log('Init with template "%s" to "%s".', project.template, project.path);
+  # Report accepted command:
+  console.log "Init with template #{project.template} to '#{project.path}'."
 
-  // Copy template dir:
-  wrench.copyDirRecursive(project.templatePath, project.path, function (err, current) {
-    if (!err) {
-      console.log([
+  # Copy template dir:
+  wrench.copyDirRecursive project.templatePath, project.path, (err, current) ->
+    if not err
+      msg = [
         'Done. Now try:',
         '    $ cd %s',
         '    $ npm install',
-        '    $ grunt watch'].join('\n'), project.name);
-    }
-  });
-} else {
-  program.help();
-}
+        '    $ grunt watch'].join '\n'
+      console.log msg, project.name
+    yes unless err
+else
+  do program.help
