@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
   var options = {
     buildPath:  'lib',
-    coffeePath: 'coffee'
+    coffeePath: 'src'
   };
   // Project configuration
   grunt.initConfig({
