@@ -29,7 +29,7 @@
         "start": "server"
     },
     "bin":             {
-        "groar": "./bin/groar"
+        "groar": "./bin/cli"
     },
     "dependencies":    {
         "commander": "*",

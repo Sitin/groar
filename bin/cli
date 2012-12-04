@@ -48,6 +48,6 @@ if program.init
         '    $ npm install',
         '    $ grunt watch'].join '\n'
       console.log msg, project.name
-    yes unless err
+    current unless err
 else
   do program.help
