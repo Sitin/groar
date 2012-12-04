@@ -1,5 +1,5 @@
 /node_modules/
-/coffee/
+/src/
 .git*
 .DS_STORE
 .idea
