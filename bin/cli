@@ -2,7 +2,6 @@
 
 program = require 'commander'
 fs = require 'fs'
-mkdirp = require 'mkdirp'
 path = require 'path'
 wrench = require 'wrench'
 pckg = require "#{__dirname}/../package.json"
