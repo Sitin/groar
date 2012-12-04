@@ -3,13 +3,14 @@ module.exports = function (grunt) {
 
   var options = {
     buildPath:  'lib',
-    coffeePath: 'src'
+    coffeePath: 'src',
+    testPath:   'test'
   };
   // Project configuration
   grunt.initConfig({
     pkg:        '<json:package.json>',
     test:       {
-      files: ['test/**/*.js']
+      files: [options.testPath + '/**/*.js']
     },
     coffeelint: {
       main: [options.coffeePath + '/**/*.coffee']
