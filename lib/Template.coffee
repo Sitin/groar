@@ -29,25 +29,31 @@ class Template
     @relative = path.relative @base, @dest
 
     @message = @render @message
-    #@description = @render @description
+    @description = @render @description
 
   perform: (callback) ->
     @before?()
     switch typeof @action
-      when 'function' then @action callback
-      when 'string' then @[action]? callback
-    @after?()
+      when 'function' then @action @finalize @after, callback
+      when 'string' then @[action]? @finalize @after, callback
+      else
+
+  finalize: (one, two) ->
+    ->
+      one? two
+      two?() unless one
 
   copy: (callback) ->
     ncp @path, @dest, (err) =>
       console.log @message unless err
       console.log err if err
-      do callback? err
+      callback? err
 
   render: (message) ->
     switch typeof message
       when 'string' then message = _.template message, @
-      when 'function' then message = do message
+      when 'function' then message = message()
+      else message = ""
     message
 
 
