@@ -1,7 +1,10 @@
 module.exports = function (grunt) {
   "use strict";
 
-  var options = require('./groar');
+  var options = {
+    buildPath:  'lib',
+    coffeePath: 'coffee'
+  };
   // Project configuration
   grunt.initConfig({
     pkg:        '<json:package.json>',
