@@ -32,8 +32,9 @@
         "groar": "./bin/cli"
     },
     "dependencies":    {
-        "commander": "*",
-        "wrench":    "*"
+        "commander":  "*",
+        "ncp":        "*",
+        "underscore": "*"
     },
     "devDependencies": {
         "grunt":             "~0.3.17",
