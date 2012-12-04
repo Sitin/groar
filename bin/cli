@@ -3,8 +3,12 @@
 program = require 'commander'
 fs = require 'fs'
 path = require 'path'
-wrench = require 'wrench'
 pckg = require "#{__dirname}/../package.json"
+
+global.GROAR_HOME = fs.realpathSync "#{__dirname}/.."
+
+tpl = require "#{__dirname}/../lib/Template"
+
 defaultTemplate = 'module'
 
 program
@@ -36,17 +40,9 @@ if program.init
   project.templatePath = "#{__dirname}/../templates/#{project.template}/"
 
   # Report accepted command:
-  console.log "Init with template #{project.template} to '#{project.path}'."
+  console.log "Init with template '#{project.template}' to '#{project.path}'."
 
-  # Copy template dir:
-  wrench.copyDirRecursive project.templatePath, project.path, (err, current) ->
-    if not err
-      msg = [
-        'Done. Now try:',
-        '    $ cd %s',
-        '    $ npm install',
-        '    $ grunt watch'].join '\n'
-      console.log msg, project.name
-    current unless err
+  # Perform template:
+  tpl.perform project.template, project.path
 else
   do program.help
