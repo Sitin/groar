@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         options: {
           bare:          false,
           preserve_dirs: true,
-          base_path:     'coffee'
+          base_path:     options.coffeePath
         }
       }
     },
