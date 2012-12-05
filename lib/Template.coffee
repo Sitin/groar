@@ -7,58 +7,72 @@ fs = require 'fs'
 path = require 'path'
 _ = require 'underscore'
 ncp = (require 'ncp').ncp
+async = require 'async'
+
+defaultMessages =
+  before: "Init with template '<%=name %>' to '<%=relative %>'."
 
 class Template
+  defaultMessages:
+    before: "Init with template '<%=name %>' to '<%=relative %>'."
+
   constructor: (template, dest) ->
     assert.strictEqual typeof template, 'string', "Invalid template name."
 
     config = require "#{GROAR_HOME}/templates/#{template}.coffee"
-    _.extend @, config
 
-    @action = @copy
+    @name = if config.name? then config.name else template
 
-    @name = template unless @name?
+    @setAction config.action
+    @initPaths dest, config.path
+    @setMessages config.messages
+    @initEvents config.before, config.after
 
+  initEvents: (before, after) ->
+    def = (callback) -> callback?()
+    [@before, @after] = (fn || def for fn in [before, after])
+
+
+  initPaths: (dest, tpl) ->
     @base = process.cwd()
 
     @dest = dest if dest?
     @dest = path.resolve @dest
 
+    @path = tpl
     assert.ok fs.existsSync @path
 
     @relative = path.relative @base, @dest
 
-    @message = @render @message
-    @description = @render @description
+  setAction: (action) ->
+    @action = action || 'copy'
+    @action = @[@action] if typeof @action is 'string'
+
+  setMessages: (messages) ->
+    @messages = {} unless @messages?
+    _.defaults messages, @defaultMessages
+
+    keys = _.keys messages
+    texts = _.map messages, @render
+
+    _.extend @messages, _.object keys, texts
 
   perform: (callback) ->
-    @before?()
-    switch typeof @action
-      when 'function' then @action @finalize @after, callback
-      when 'string' then @[action]? @finalize @after, callback
-      else
+    console.log @messages.before
+    async.series [@before, @action, @after], callback
 
-  finalize: (one, two) ->
-    ->
-      one? two
-      two?() unless one
-
-  copy: (callback) ->
+  copy: (callback) =>
     ncp @path, @dest, (err) =>
-      console.log @message unless err
+      console.log @messages.after unless err
       console.log err if err
       callback? err
 
-  render: (message) ->
-    switch typeof message
-      when 'string' then message = _.template message, @
-      when 'function' then message = message()
-      else message = ""
-    message
+  render: (message) =>
+    _.template message, @
 
 
 module.exports.Template = Template
-module.exports.perform = (tpl, dest) ->
+module.exports.perform = (tpl, dest, callback) ->
   template = new Template tpl, dest
-  do template.perform
-  template
+  template.perform ->
+    callback?()

@@ -34,7 +34,8 @@
     "dependencies":    {
         "commander":  "*",
         "ncp":        "*",
-        "underscore": "*"
+        "underscore": "*",
+        "async":      "*"
     },
     "devDependencies": {
         "grunt":             "~0.3.17",

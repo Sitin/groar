@@ -39,9 +39,6 @@ if program.init
 
   project.templatePath = "#{__dirname}/../templates/#{project.template}/"
 
-  # Report accepted command:
-  console.log "Init with template '#{project.template}' to '#{project.path}'."
-
   # Perform template:
   tpl.perform project.template, project.path
 else
