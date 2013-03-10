@@ -1,0 +1,11 @@
+#!/usr/bin/env coffee
+
+fs = require 'fs'
+
+files =
+  './templates/module/dist.gitignore': './templates/module/.gitignore'
+  './templates/module/dist.npmignore': './templates/module/.npmignore'
+
+for src, dest of files
+  console.log 'Rename "%s" to "%s".', src, dest
+  fs.renameSync src, dest

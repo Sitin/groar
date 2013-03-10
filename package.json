@@ -1,7 +1,7 @@
 {
     "name":            "groar",
     "description":     "Template manager for grunt.",
-    "version":         "0.2.0",
+    "version":         "0.2.1",
     "homepage":        "https://github.com/sitin/groar",
     "author":          {
         "name":  "Mikhail Zyatin",
@@ -25,7 +25,7 @@
         "node": ">= 0.8.14"
     },
     "scripts":         {
-        "postinstall":  "./bin/postinstall.sh"
+        "postinstall":  "coffee ./bin/postinstall"
     },
     "bin":             {
         "groar": "./bin/cli"
