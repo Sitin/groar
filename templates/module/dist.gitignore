@@ -20,6 +20,10 @@ pids
 logs
 results
 
-src
-test
-*.coffee
+lib
+*.test.js
+*.func.js
+/index.js
+private.json
+
+/doc/
